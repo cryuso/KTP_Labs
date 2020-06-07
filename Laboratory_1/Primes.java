@@ -1,4 +1,4 @@
-public class Lab1 {
+public class Primes {
 
     public static void main(String[] args)
     {
