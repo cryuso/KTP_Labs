@@ -73,11 +73,8 @@ public class FractalExplorer {
 			
 			// Настраиваем имя
 			fchooser.setDialogTitle("Choose path");
-			//fchooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
 			
 			// Настраиваем фильтры
-			//FileNameExtensionFilter filter = new FileNameExtensionFilter("PNG Images", "*.png"); 
-			//fchooser.setFileFilter(filter);
 			fchooser.addChoosableFileFilter(new FileNameExtensionFilter("PNG Images", "*.png"));
 			fchooser.addChoosableFileFilter(new FileNameExtensionFilter("JPEG Images", "*.jpeg"));
 			fchooser.addChoosableFileFilter(new FileNameExtensionFilter("BMP Images", "*.bmp"));
@@ -101,11 +98,6 @@ public class FractalExplorer {
 			if (extension.equals("PNG Images")) ext = "png";
 			if (extension.equals("JPEG Images")) ext = "jpeg";
 			if (extension.equals("BMP Images")) ext = "bmp";
-			//nowPath = fchooser.getSelectedFile();
-			//nowPath = new File(nowPath.getPath() + nowPath.getName() + ".png");
-			//System.out.println(nowPath.getAbsoluteFile());
-			//System.out.println("getPath = " + fchooser.getSelectedFile().getPath());
-			//System.out.println("getName = " + fchooser.getSelectedFile().getName());
 			nowPath = new File(fchooser.getSelectedFile().getPath() + "." + ext);
 			System.out.println("Full name = " + nowPath);
 			
@@ -291,7 +283,6 @@ public class FractalExplorer {
 	
 	public void drawFractal(int index) {
 		
-		//System.out.println("Range = " + range.x + ", " + range.y + ", " + range.width + ", " + range.height + "\n");
 		
 		// Очистка картинки после предыдущего рисунка
 		this.clearImage();
@@ -305,10 +296,6 @@ public class FractalExplorer {
 				
 				// Определяем точку входа в множество Мандельброта
 				int numOfIter = fractals.get(index).numIterations(xCoord, yCoord);
-				
-				// Логирование количества итераций каждой точки
-				//if (numOfIter > 50)
-					//System.out.println("x = " + x + ", y = " + y + ", xCoord = " + xCoord + ", yCoord = " + yCoord + ", iteration = " + numOfIter);
 				
 				int rgbColor;
 				if (numOfIter != -1) {
