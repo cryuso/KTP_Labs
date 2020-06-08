@@ -304,38 +304,11 @@ public class FractalExplorer {
 			FractalWorker tempThread = new FractalWorker(i, pictureWidth, index);
 			tempThread.execute();
 		}
-		
-		
-		/*
-		for (int x = 0; x < this.width; x++) {
-			for (int y = 0; y < this.height; y++) {
-				
-				// Преобразование координат плоскости пикселей в координаты мнимой плоскости
-				double xCoord = FractalGenerator.getCoord(range.x, range.x + range.width, display.getWidth(), x);
-				double yCoord = FractalGenerator.getCoord(range.y, range.y + range.height, display.getHeight(), y);
-				
-				// Определение входа точки в множество Мандельброта
-				int numOfIter = fractals.get(index).numIterations(xCoord, yCoord);
-				
-				int rgbColor;
-				if (numOfIter != -1) {
-					float hue = 0.7f + (float) numOfIter / 200f; 
-					rgbColor = Color.HSBtoRGB(hue, 1f, 1f); 
-				} 
-				else {
-					rgbColor = Color.HSBtoRGB(0, 0, 0); 
-				}
-				
-				display.drawPixel(x, y, new Color(rgbColor));
-				
-			}
-		}
-		*/
 	}
 	
-	/*
+	/**
 	* Управление панелью для рисования
-	*/
+	**/
 	public void setStartImage() {
 		this.display.setStartImage();
 	}
@@ -399,19 +372,12 @@ public class FractalExplorer {
 						rgbColor = Color.HSBtoRGB(0, 0, 0); 
 					}
 					
-					// 1!После каждого вызова идёт полная перерисовка
-					//display.drawPixel(x, numOfStr, new Color(rgbColor));
 					
-					// 2!Вроде как это неполная перерисовка
-					//display.drawPixelWithoutFullRepaint(0, x, numOfStr, 1, 1, new Color(rgbColor));
-					
-					// 3!Перерисовка без обновления элемента - рисуется на buffered image без присвоение результата jpanel
+					// Перерисовка без обновления элемента - рисуется на buffered image без присвоение результата jpanel
 					display.drawPixelWithNoRepaint(x, numOfStr, new Color(rgbColor));
 					
 					x++;
 				}
-				// 3!Обновление рисунка при перерисовке без обновления элемента
-				//display.repaintPicture(0, numOfStr, picWidth);
 			} 
 			catch (Exception e) { 
 				e.printStackTrace(); 
